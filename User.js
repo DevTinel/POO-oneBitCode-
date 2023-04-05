@@ -5,7 +5,7 @@ class User {
   login(user, password) {
     if (user != this.email || password != this.password) {
       console.log(
-        "Usuario ou senha incorretas,por favor verifique suas credenciais"
+        "Email ou senha inválidas, por favor verifique suas credenciais"
       );
     } else {
       console.log("Usuario Logado!");
@@ -19,4 +19,4 @@ const david = new User(
   "chocolattra123"
 );
 console.log(david);
-david.login("davidaugustolol36@gmail.cm", "chocolattra123");
+david.login("davidaugustolol36@gmail.com", "chocolattra123");
