@@ -21,4 +21,4 @@ const bike = new Product(
 
 bike.addOnStock(20);
 bike.calculateDiscount(30);
-console.log(bike);
+console.log('clonou');
