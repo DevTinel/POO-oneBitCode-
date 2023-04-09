@@ -1,0 +1,105 @@
+class Character {
+    constructor(name, lifePoints, attackPoints, defensePoints) {
+        (this.name = name),
+            (this.lifePoints = lifePoints),
+            (this.attackPoints = attackPoints),
+            (this.defensePoints = defensePoints);
+    }
+    attack(targetName, targetLife, targetAttack, targetDefense) {
+        let dano = this.attackPoints - targetDefense;
+        targetName, (targetLife -= dano), targetAttack, targetDefense;
+        return { targetName, targetLife, targetAttack, targetDefense };
+    }
+}
+
+class Thief extends Character {
+    attack(targetName, targetLife, targetAttack, targetDefense) {
+        let dano =
+            this.attackPoints * 2 - targetDefense < 0
+                ? 0
+                : this.attackPoints * 2 - targetDefense;
+
+        targetLife -= dano;
+
+        return `
+        Atacante: ${this.name},
+        Pontos de vida: ${this.lifePoints},
+        Pontos de ataque: ${this.attackPoints},
+        Pontos de defesa: ${this.defensePoints}
+        
+        ${this.name} atacou ${targetName} com ${
+            this.attackPoints
+        } pontos de ataque e causou ${dano} aos pontos de vida.
+        
+        Defensor: ${targetName},
+        Vida Restante:${targetLife + dano} / ${targetLife},
+        Pontos de Ataque: ${targetAttack},
+        Pontos de Defesa: ${targetDefense}
+        `;
+    }
+}
+
+class Mage extends Character {
+    constructor(name, lifePoints, attackPoints, defensePoints, magePoints) {
+        super(name, lifePoints, attackPoints, defensePoints);
+        this.magePoints = magePoints;
+    }
+    attack(targetName, targetLife, targetAttack, targetDefense) {
+        let dano =
+            this.attackPoints + this.magePoints - targetDefense < 0
+                ? 0
+                : this.attackPoints + this.magePoints - targetDefense;
+        targetLife -= dano;
+        console.log(dano);
+        return `
+        Atacante: ${this.name},
+        Pontos de vida: ${this.lifePoints},
+        Pontos de ataque: ${this.attackPoints},
+        Pontos de defesa: ${this.defensePoints},
+        Pontos de magia: ${this.magePoints}
+        
+        ${this.name} atacou ${targetName} com ${
+            this.attackPoints
+        } pontos de ataque e ${
+            this.magePoints
+        } de magia e causou ${dano} aos pontos de vida.
+        
+        Defensor: ${targetName},
+        Vida Restante:${targetLife + dano} / ${targetLife},
+        Pontos de Ataque: ${targetAttack},
+        Pontos de Defesa: ${targetDefense}
+        `;
+    }
+
+    heal(targetName, targetLife) {
+        const heal = targetLife * 2;
+        return `${this.name} curou ${targetName} em ${heal} de vida`;
+    }
+}
+const Gandalf = new Mage("Gandalf", 5000, 300, 200, 500);
+
+const warriorAtacker = new Character("Pride", 5000, 500, 500);
+
+console.log(Gandalf.heal("Pride", 900));
+// console.log(Gandalf.attack("Pride", 5000, 300, 300));
+
+//  class Warrior{
+//     super(name,lifePoints,attackPoints,defensePoints)
+//     #position = null
+//     constructor(shieldPoints,position){
+//         this.shieldPoints = shieldPoints,
+//         this.#position = position
+//     }
+//     tradePosition(position){
+//         if(position == attack){
+//             attack()
+//         }else if(position == defense){
+//             this.defensePoints += this.shieldPoints
+//         }
+//     }
+// }
+
+// console.log(warriorAtacker.attack("GameOver", 3000, 300, 500));
+
+// const fullDano = new Thief("Full Dano", 3000, 700, 400);
+// console.log(fullDano.attack("Pride", 5000, 500, 300));
