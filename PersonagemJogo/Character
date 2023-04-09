@@ -151,4 +151,4 @@ const waw = new Warrior("GameOver", 3000, 800, 500, 500, "attack");
 const kratos = new Warrior("Kratos", 5000, 300, 500, 1000, "defense");
 
 console.log(waw.tradePosition("attack"));
-console.log(waw.attack("Kratos", 5000, 0, 0, 0, "attack"));
+console.log(waw.attack("Kratos", 5000, 0, 0, 300, "attack"));
