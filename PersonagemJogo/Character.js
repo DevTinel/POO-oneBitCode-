@@ -1,4 +1,5 @@
 class Character {
+    #money;
     constructor(name, lifePoints, attackPoints, defensePoints) {
         (this.name = name),
             (this.lifePoints = lifePoints),
@@ -22,6 +23,7 @@ class Thief extends Character {
         targetLife -= dano;
 
         return `
+        
         Atacante: ${this.name},
         Pontos de vida: ${this.lifePoints},
         Pontos de ataque: ${this.attackPoints},
@@ -44,6 +46,7 @@ class Mage extends Character {
         super(name, lifePoints, attackPoints, defensePoints);
         this.magePoints = magePoints;
     }
+
     attack(targetName, targetLife, targetAttack, targetDefense) {
         let dano =
             this.attackPoints + this.magePoints - targetDefense < 0
